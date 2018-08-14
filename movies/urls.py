@@ -19,5 +19,5 @@ from django.urls import path
 from .views import MovieViewSet
 
 urlpatterns = [
-    path(r'', MovieViewSet.as_view({'post': 'create'}), name='add-movie'),
+    path(r'', MovieViewSet.as_view({'post': 'create', 'get': 'list'}), name='movies'),
 ]

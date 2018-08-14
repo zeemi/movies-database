@@ -9,15 +9,10 @@ from .serializers import MovieSerializer, MovieAddSerializer, RatingSerializer
 from .models import Movie
 
 
-class MovieViewSet(mixins.CreateModelMixin,
-                               viewsets.GenericViewSet):
+class MovieViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     A simple ViewSet for listing or retrieving users.
     """
-    # def list(self, request):
-    #     queryset = Movie.objects.all()
-    #     serializer = UserSerializer(queryset, many=True)
-    #     return Response(serializer.data)
 
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer

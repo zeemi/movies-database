@@ -5,7 +5,7 @@ from rest_framework import status
 
 from .tests_base import BaseTests
 from ..models import Movie
-from ..utils import convert_dict_keys
+from ..utils import normalize_keys
 from .resources import movie_definition
 
 from ..views import OpenMovieDatabase

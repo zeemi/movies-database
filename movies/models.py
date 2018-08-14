@@ -21,7 +21,7 @@ class Movie(models.Model):
     actors = models.TextField(null=True, blank=True)
     director = models.TextField(null=True, blank=True)
     poster = models.URLField(max_length=32, null=True, blank=True)
-    plot = models.TextField()
+    plot = models.TextField(null=True, blank=True)
 
 
 class Ratings(models.Model):

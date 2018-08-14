@@ -1,7 +1,9 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, mixins, status
 from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
 
 from libs.omdbapi import OpenMovieDatabase
+from movies.utils import convert_dict_keys
 from .serializers import MovieSerializer, MovieAddSerializer
 from .models import Movie
 
@@ -24,5 +26,10 @@ class MovieViewSet(mixins.CreateModelMixin,
         serializer = MovieAddSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         movie_definition = OpenMovieDatabase().get_by_title(serializer.validated_data['title'])
-        print(movie_definition)
-        return super(MovieViewSet, self).create(request, **kwargs)
+
+        serializer = self.get_serializer(data=convert_dict_keys(movie_definition))
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+

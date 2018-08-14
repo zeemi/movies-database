@@ -16,8 +16,8 @@ Including another URLconf
 
 from django.urls import path
 
-from .views import MovieViewSet
+from .views import CommentViewSet
 
 urlpatterns = [
-    path(r'', MovieViewSet.as_view({'post': 'create', 'get': 'list'}), name='movies'),
+    path(r'', CommentViewSet.as_view({'post': 'create', 'get': 'list'}), name='comments'),
 ]

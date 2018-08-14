@@ -19,7 +19,7 @@ class Movie(models.Model):
     writer = models.TextField(null=True, blank=True)
     actors = models.TextField(null=True, blank=True)
     director = models.TextField(null=True, blank=True)
-    poster = models.URLField(max_length=255, null=True, blank=True)
+    poster = models.CharField(max_length=255, null=True, blank=True)
     plot = models.TextField(null=True, blank=True)
     box_office = models.CharField(max_length=255, null=True, blank=True)
     dvd = models.CharField(max_length=255, null=True, blank=True)
@@ -28,7 +28,7 @@ class Movie(models.Model):
     website = models.CharField(max_length=255, null=True, blank=True)
 
 
-class Ratings(models.Model):
+class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     source = models.CharField(max_length=255)
     value = models.CharField(max_length=32)

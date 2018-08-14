@@ -1,9 +1,8 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 
 
 class Movie(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     year = models.CharField(max_length=32, null=True, blank=True)
     rated = models.CharField(max_length=32, null=True, blank=True)
     released = models.CharField(max_length=32, null=True, blank=True)
@@ -20,8 +19,13 @@ class Movie(models.Model):
     writer = models.TextField(null=True, blank=True)
     actors = models.TextField(null=True, blank=True)
     director = models.TextField(null=True, blank=True)
-    poster = models.URLField(max_length=32, null=True, blank=True)
+    poster = models.URLField(max_length=255, null=True, blank=True)
     plot = models.TextField(null=True, blank=True)
+    box_office = models.CharField(max_length=255, null=True, blank=True)
+    dvd = models.CharField(max_length=255, null=True, blank=True)
+    metascore = models.CharField(max_length=255, null=True, blank=True)
+    production = models.CharField(max_length=255, null=True, blank=True)
+    website = models.CharField(max_length=255, null=True, blank=True)
 
 
 class Ratings(models.Model):

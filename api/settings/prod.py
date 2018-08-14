@@ -1,16 +1,8 @@
 from .base import *
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MOVIE_DB_{}'.format(BASE_DIR),
-        'USER': 'MOVIE_DB_ADMIN',
-        'PASSWORD': os.environ.get('MOVIE_DB_ADMIN__MYSQL_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
     }
 }
 

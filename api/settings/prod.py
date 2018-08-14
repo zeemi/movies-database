@@ -12,4 +12,4 @@ OMDBAPI_API_KEY = os.environ.get('MOVIE_DB__OMDBAPI_API_KEY')
 
 CORS_ORIGIN_REGEX_WHITELIST = (r'^(https?://)?localhost:\d+$',)
 
-# ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']

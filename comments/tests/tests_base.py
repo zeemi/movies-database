@@ -11,5 +11,7 @@ class BaseTests(APITestCase):
 
     def setUp(self):
         self.COMMENTS_URL = reverse('comments')
-        self.existing_movie = Movie.objects.create(title="SomeMovie")
-        self.existing_comment = Comment.objects.create(movie=self.existing_movie, content="content of the comment")
+        self.first_existing_movie = Movie.objects.create(title="first_movie")
+        self.second_existing_movie = Movie.objects.create(title="another_movie")
+        self.first_movie_comment = Comment.objects.create(movie=self.first_existing_movie, content="content of the comment")
+        self.second_movie_comment = Comment.objects.create(movie=self.second_existing_movie, content="content of the comment")

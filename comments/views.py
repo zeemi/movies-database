@@ -11,7 +11,14 @@ class CommentViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.Ge
     A simple ViewSet for listing or retrieving users.
     """
 
-    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = (AllowAny,)
+
+    def get_queryset(self):
+        filter_kwargs = {}
+
+        if 'movie' in self.request.GET:
+            filter_kwargs['movie'] = self.request.GET['movie']
+
+        return Comment.objects.filter(**filter_kwargs)
 
